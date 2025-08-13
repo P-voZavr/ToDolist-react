@@ -1,0 +1,49 @@
+.ToDoObj {
+  padding: 15px;
+  width: 600px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.151);
+}
+
+.delButton {
+  height: 30px;
+  border-radius: 4px;
+  width: 55px;
+  border: none;
+  background-color: rgb(99, 7, 30);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.renameButton {
+  height: 30px;
+  border-radius: 4px;
+  width: 68px;
+  border: none;
+  background-color: var(--purple);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.p {
+  width: 440px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.renameinpt {
+  width: 400px;
+  border: 1px solid rgba(0, 0, 0, 0.322);
+  height: 30px;
+  border-radius: 4px;
+  outline: none;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding-left: 20px;
+}
