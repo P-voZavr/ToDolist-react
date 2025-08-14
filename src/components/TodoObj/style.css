@@ -47,3 +47,12 @@
   margin-left: 20px;
   padding-left: 20px;
 }
+
+.del {
+  width: 440px;
+  text-align: right;
+  margin-right: 10px;
+  color: rgba(0, 0, 0, 0.733);
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

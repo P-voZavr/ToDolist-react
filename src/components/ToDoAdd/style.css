@@ -38,4 +38,10 @@
   color: white;
   font-size: 15px;
   cursor: pointer;
+  transition: all 150ms;
+}
+
+.AddButton:active {
+  opacity: 0.9;
+  height: 34px;
 }

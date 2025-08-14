@@ -12,6 +12,7 @@ function ToDoObj({ text, i, ToDolst, ToDolstChange }: objpar) {
   const [content, setContent] = useState(text);
   const [ternar, setTernar] = useState(false);
   const [inptvalue, setinptvalue] = useState("");
+  const [checkboxvalue, setchechkboxvalue] = useState(false);
 
   const ToDoDel = (index: number) => {
     const newList = [...ToDolst];
@@ -31,9 +32,17 @@ function ToDoObj({ text, i, ToDolst, ToDolstChange }: objpar) {
     }
   };
 
+  const ToDoCheckbox = () => {
+    setchechkboxvalue(!checkboxvalue);
+  };
+
   return (
     <div className="ToDoObj">
-      <input type="checkbox"></input>
+      <input
+        type="checkbox"
+        checked={checkboxvalue}
+        onChange={ToDoCheckbox}
+      ></input>
       {ternar ? (
         <input
           className="renameinpt"
@@ -43,6 +52,8 @@ function ToDoObj({ text, i, ToDolst, ToDolstChange }: objpar) {
           autoFocus
           placeholder="Нажми Enter чтобы подтвердить изминение"
         />
+      ) : checkboxvalue ? (
+        <del className="del">{content}</del>
       ) : (
         <p className="p">{content}</p>
       )}

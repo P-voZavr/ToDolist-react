@@ -7,15 +7,27 @@ type props = {
 function ToDoTable({ ToDolst, ToDolstChange }: props) {
   return (
     <div className="ToDoTable">
-      {ToDolst.map((val, index) => (
-        <ToDoObj
-          ToDolstChange={ToDolstChange}
-          ToDolst={ToDolst}
-          text={val}
-          i={index}
-          key={index + val}
-        />
-      ))}
+      {ToDolst.length > 5
+        ? [...ToDolst]
+            .slice(ToDolst.length - 5, ToDolst.length)
+            .map((val, index) => (
+              <ToDoObj
+                ToDolstChange={ToDolstChange}
+                ToDolst={ToDolst}
+                text={val}
+                i={index}
+                key={index + val}
+              />
+            ))
+        : ToDolst.map((val, index) => (
+            <ToDoObj
+              ToDolstChange={ToDolstChange}
+              ToDolst={ToDolst}
+              text={val}
+              i={index}
+              key={index + val}
+            />
+          ))}
     </div>
   );
 }
