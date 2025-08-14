@@ -1,32 +1,29 @@
 import "./style.css";
 import ToDoObj from "../TodoObj/ToDoObj";
-import PointerButtons from "../PointerButtons/PointerButtons";
-import { useState } from "react";
+
 type props = {
   ToDolst: string[];
   ToDolstChange: React.Dispatch<React.SetStateAction<string[]>>;
+  page: number;
 };
-function ToDoTable({ ToDolst, ToDolstChange }: props) {
-  const [page, setpage] = useState(0);
-
-  const totalpages = Math.ceil(ToDolst.length / 5);
+function ToDoTable({ ToDolst, ToDolstChange, page }: props) {
+  const startIndex = page * 5;
+  const endIndex = startIndex + 5;
+  const currentItems = [...ToDolst].reverse().slice(startIndex, endIndex);
 
   return (
     <div className="ToDoTable">
       {ToDolst.length > 5 ? (
         <>
-          {[...ToDolst]
-            .slice(ToDolst.length - 5, ToDolst.length)
-            .map((val, index) => (
-              <ToDoObj
-                ToDolstChange={ToDolstChange}
-                ToDolst={ToDolst}
-                text={val}
-                i={index}
-                key={index + val}
-              />
-            ))}
-          <PointerButtons />
+          {currentItems.map((val, index) => (
+            <ToDoObj
+              ToDolstChange={ToDolstChange}
+              ToDolst={ToDolst}
+              text={val}
+              i={index}
+              key={index + val}
+            />
+          ))}
         </>
       ) : (
         ToDolst.map((val, index) => (
@@ -37,7 +34,7 @@ function ToDoTable({ ToDolst, ToDolstChange }: props) {
             i={index}
             key={index + val}
           />
-        ))
+        )).reverse()
       )}
     </div>
   );

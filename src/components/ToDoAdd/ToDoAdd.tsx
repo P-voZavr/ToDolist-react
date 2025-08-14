@@ -4,8 +4,9 @@ import { useState } from "react";
 type props = {
   ToDolst: string[];
   ToDolstChange: React.Dispatch<React.SetStateAction<string[]>>;
+  setpage: React.Dispatch<React.SetStateAction<number>>;
 };
-function ToDoAdd({ ToDolst, ToDolstChange }: props) {
+function ToDoAdd({ ToDolst, ToDolstChange, setpage }: props) {
   const [ToDovalue, ToDovalueChange] = useState<string>("");
 
   function AddToDo() {
@@ -13,6 +14,7 @@ function ToDoAdd({ ToDolst, ToDolstChange }: props) {
       ToDovalueChange("");
       return;
     }
+    setpage(0); // Reset page to 0 when a new ToDo is added
     ToDolstChange([...ToDolst, ToDovalue]);
     ToDovalueChange("");
   }

@@ -21,4 +21,11 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  position: fixed;
+  top: 645px;
+}
+
+.pages {
+  margin-top: 10px;
+  color: var(--purple);
 }
