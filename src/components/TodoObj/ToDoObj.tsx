@@ -1,17 +1,18 @@
 import { useState } from "react";
 import "./style.css";
+import { ToDo } from "../../types/ToDo";
 
 type objpar = {
   text: string;
   i: number;
-  ToDolst: string[];
-  ToDolstChange: React.Dispatch<React.SetStateAction<string[]>>;
+  ToDolst: ToDo[];
+  ToDolstChange: React.Dispatch<React.SetStateAction<ToDo[]>>;
+  checkboxvalue: boolean;
 };
 
-function ToDoObj({ text, i, ToDolst, ToDolstChange }: objpar) {
+function ToDoObj({ text, i, ToDolst, ToDolstChange, checkboxvalue }: objpar) {
   const [ternar, setTernar] = useState(false);
   const [inptvalue, setinptvalue] = useState("");
-  const [checkboxvalue, setchechkboxvalue] = useState(false);
 
   const ToDoDel = (index: number) => {
     const newList = [...ToDolst];
@@ -27,7 +28,7 @@ function ToDoObj({ text, i, ToDolst, ToDolstChange }: objpar) {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter" && inptvalue.trim() !== "") {
       const newList = [...ToDolst];
-      newList.splice(i, 1, inptvalue);
+      newList.splice(i, 1, { text: inptvalue, checkboxvalue: checkboxvalue });
 
       ToDolstChange(newList);
 
@@ -36,7 +37,9 @@ function ToDoObj({ text, i, ToDolst, ToDolstChange }: objpar) {
   };
 
   const ToDoCheckbox = () => {
-    setchechkboxvalue(!checkboxvalue);
+    const newList = [...ToDolst];
+    newList.splice(i, 1, { text: text, checkboxvalue: !checkboxvalue });
+    ToDolstChange(newList);
   };
 
   return (

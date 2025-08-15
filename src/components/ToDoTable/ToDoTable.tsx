@@ -1,9 +1,10 @@
 import "./style.css";
 import ToDoObj from "../TodoObj/ToDoObj";
+import { ToDo } from "../../types/ToDo";
 
 type props = {
-  ToDolst: string[];
-  ToDolstChange: React.Dispatch<React.SetStateAction<string[]>>;
+  ToDolst: ToDo[];
+  ToDolstChange: React.Dispatch<React.SetStateAction<ToDo[]>>;
   page: number;
 };
 function ToDoTable({ ToDolst, ToDolstChange, page }: props) {
@@ -14,9 +15,10 @@ function ToDoTable({ ToDolst, ToDolstChange, page }: props) {
     <ToDoObj
       ToDolstChange={ToDolstChange}
       ToDolst={ToDolst}
-      text={val}
+      text={val.text}
+      checkboxvalue={val.checkboxvalue}
       i={index}
-      key={index + val}
+      key={index + val.text}
     />
   )).reverse();
 

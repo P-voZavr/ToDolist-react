@@ -1,9 +1,10 @@
 import "./style.css";
 import { useState } from "react";
+import { ToDo } from "../../types/ToDo";
 
 type props = {
-  ToDolst: string[];
-  ToDolstChange: React.Dispatch<React.SetStateAction<string[]>>;
+  ToDolst: ToDo[];
+  ToDolstChange: React.Dispatch<React.SetStateAction<ToDo[]>>;
   setpage: React.Dispatch<React.SetStateAction<number>>;
 };
 function ToDoAdd({ ToDolst, ToDolstChange, setpage }: props) {
@@ -15,7 +16,7 @@ function ToDoAdd({ ToDolst, ToDolstChange, setpage }: props) {
       return;
     }
     setpage(0);
-    ToDolstChange([...ToDolst, ToDovalue]);
+    ToDolstChange([...ToDolst, { text: ToDovalue, checkboxvalue: false }]);
     ToDovalueChange("");
   }
 
