@@ -1,5 +1,16 @@
 .pageButton {
   border: none;
+  background-color: white;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 4px;
+  color: black;
+  height: 30px;
+  width: 30px;
+}
+
+.pageButton:hover {
+  border: none;
   background-color: var(--purple);
   cursor: pointer;
   font-size: 17px;
@@ -7,7 +18,9 @@
   color: white;
   height: 30px;
   width: 30px;
+  opacity: 0.9;
 }
+
 .pagesArr {
   display: flex;
   justify-content: center;
@@ -21,7 +34,7 @@
   font-size: 17px;
   border-radius: 4px;
   color: white;
-  height: 32px;
-  width: 32px;
-  text-decoration: underline;
+  height: 30px;
+  width: 30px;
+  opacity: 0.9;
 }

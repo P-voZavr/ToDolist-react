@@ -29,8 +29,9 @@ function PointerButtons({ page, setpage, ToDolst }: prop) {
       <button className="PointButton" onClick={handlePrevPage}>
         {"<"} Prev
       </button>
-
-      <PagesArr page={page} setpage={setpage} ToDolst={ToDolst} />
+      <div className="Botline">
+        <PagesArr page={page} setpage={setpage} ToDolst={ToDolst} />
+      </div>
 
       <button className="PointButton" onClick={handleNextPage}>
         Next {">"}
