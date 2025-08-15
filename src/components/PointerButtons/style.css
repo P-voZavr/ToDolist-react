@@ -1,15 +1,16 @@
 .PointButton {
-  height: 40px;
-  border-radius: 8px;
-  width: 40px;
+  height: 30px;
+  border-radius: 4px;
+  width: 65px;
   border: none;
   background-color: var(--purple);
   color: white;
-  font-size: 20px;
+  font-size: 17px;
   cursor: pointer;
   transition: all 100ms;
   margin-right: 5px;
   margin-left: 5px;
+  margin-top: 2px;
 }
 
 .PointButton:active {
@@ -23,9 +24,4 @@
   width: 100%;
   position: fixed;
   top: 645px;
-}
-
-.pages {
-  margin-top: 10px;
-  color: var(--purple);
 }

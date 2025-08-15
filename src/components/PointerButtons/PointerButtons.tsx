@@ -1,9 +1,10 @@
 import "./style.css";
-
+import PagesArr from "../PagesArr/PagesArr";
+import { ToDo } from "../../types/ToDo";
 type prop = {
   setpage: React.Dispatch<React.SetStateAction<number>>;
   page: number;
-  ToDolst: string[];
+  ToDolst: ToDo[];
 };
 
 function PointerButtons({ page, setpage, ToDolst }: prop) {
@@ -26,13 +27,13 @@ function PointerButtons({ page, setpage, ToDolst }: prop) {
   return (
     <div className="PointButtonDiv">
       <button className="PointButton" onClick={handlePrevPage}>
-        {"<"}
+        {"<"} Prev
       </button>
-      <div className="pages">
-        {page + 1} / {totalpages}
-      </div>
+
+      <PagesArr page={page} setpage={setpage} ToDolst={ToDolst} />
+
       <button className="PointButton" onClick={handleNextPage}>
-        {">"}
+        Next {">"}
       </button>
     </div>
   );
