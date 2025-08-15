@@ -9,7 +9,6 @@ type objpar = {
 };
 
 function ToDoObj({ text, i, ToDolst, ToDolstChange }: objpar) {
-  const [content, setContent] = useState(text);
   const [ternar, setTernar] = useState(false);
   const [inptvalue, setinptvalue] = useState("");
   const [checkboxvalue, setchechkboxvalue] = useState(false);
@@ -27,7 +26,11 @@ function ToDoObj({ text, i, ToDolst, ToDolstChange }: objpar) {
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter" && inptvalue.trim() !== "") {
-      setContent(inptvalue);
+      const newList = [...ToDolst];
+      newList.splice(i, 1, inptvalue);
+
+      ToDolstChange(newList);
+
       ToDoRename();
     }
   };
@@ -38,11 +41,7 @@ function ToDoObj({ text, i, ToDolst, ToDolstChange }: objpar) {
 
   return (
     <div className="ToDoObj">
-      <input
-        type="checkbox"
-        checked={checkboxvalue}
-        onChange={ToDoCheckbox}
-      ></input>
+      <input type="checkbox" checked={checkboxvalue} onChange={ToDoCheckbox} />
       {ternar ? (
         <input
           className="renameinpt"
@@ -50,12 +49,12 @@ function ToDoObj({ text, i, ToDolst, ToDolstChange }: objpar) {
           onChange={(event) => setinptvalue(event.target.value)}
           onKeyDown={handleKeyDown}
           autoFocus
-          placeholder="Нажми Enter чтобы подтвердить изминение"
+          placeholder="Нажми Enter чтобы подтвердить изменение"
         />
       ) : checkboxvalue ? (
-        <del className="del">{content}</del>
+        <del className="del">{text}</del>
       ) : (
-        <p className="p">{content}</p>
+        <p className="p">{text}</p>
       )}
       <button className="delButton" onClick={() => ToDoDel(i)}>
         Delete

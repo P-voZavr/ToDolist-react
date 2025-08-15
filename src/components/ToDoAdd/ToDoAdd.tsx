@@ -14,7 +14,7 @@ function ToDoAdd({ ToDolst, ToDolstChange, setpage }: props) {
       ToDovalueChange("");
       return;
     }
-    setpage(0); // Reset page to 0 when a new ToDo is added
+    setpage(0);
     ToDolstChange([...ToDolst, ToDovalue]);
     ToDovalueChange("");
   }
