@@ -1,6 +1,21 @@
 :root {
   --purple: #5d189e;
   --box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.322);
+  --bg-color: #ffffff;
+  --text-color: #010409;
+  --border-color: rgba(0, 0, 0, 0.151);
+}
+
+[data-theme="dark"] {
+  --purple: #0a453b;
+  --box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.322);
+  --bg-color: #010409;
+  --text-color: #ffffff;
+  --border-color: rgba(255, 255, 255, 0.151);
+}
+
+html[data-theme="dark"] {
+  background-color: var(--bg-color);
 }
 
 .body {
@@ -11,10 +26,11 @@
 }
 
 .MainPage {
-  background-color: white;
+  background-color: var(--bg-color);
   display: flex;
   align-items: center;
   flex-direction: column;
+  color: var(--text-color);
 }
 
 .PurpLine {

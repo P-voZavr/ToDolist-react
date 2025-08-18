@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: right;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.151);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .delButton {
@@ -52,7 +52,33 @@
   width: 440px;
   text-align: right;
   margin-right: 10px;
-  color: rgba(0, 0, 0, 0.733);
+  color: var(--purple);
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none; /* для Safari */
+  width: 15px;
+  height: 15px;
+  border: 1px solid var(--purple);
+  border-radius: 1px;
+  background: var(--bg-color);
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background: var(--purple);
+  border-color: var(--purple);
+  position: relative;
+}
+
+input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  left: 1px;
+  top: -3px;
 }

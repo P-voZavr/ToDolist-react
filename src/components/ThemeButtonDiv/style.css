@@ -1,0 +1,17 @@
+.ThemeButtonDiv {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-bottom: -65px;
+  height: 65px;
+}
+
+.ThemeButtonIsDark {
+  background-color: var(--bg-color);
+  border: none;
+  height: 30px;
+  width: 30px;
+  border-radius: 4px;
+  padding-top: 5px;
+  margin-right: 20px;
+}

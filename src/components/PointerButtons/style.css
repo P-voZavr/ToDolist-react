@@ -3,9 +3,9 @@
   border-radius: 4px;
   width: 65px;
   border: none;
-  background-color: white;
-  color: black;
-  font-size: 18px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 17px;
   cursor: pointer;
   transition: all 100ms;
   margin-right: 5px;
@@ -24,7 +24,7 @@
   border: none;
   background-color: var(--purple);
   color: white;
-  font-size: 18px;
+  font-size: 17px;
   cursor: pointer;
   transition: all 100ms;
   margin-right: 5px;
@@ -43,6 +43,6 @@
 
 .Botline {
   margin-top: 1px;
-  border-bottom: 1px solid rgba(41, 41, 41, 0.288);
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 4px;
 }

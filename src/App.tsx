@@ -3,12 +3,14 @@ import { useState } from "react";
 import ToDoAdd from "./components/ToDoAdd/ToDoAdd";
 import ToDoTable from "./components/ToDoTable/ToDoTable.tsx";
 import PointerButtons from "./components/PointerButtons/PointerButtons.tsx";
+import ThemeButtonDiv from "./components/ThemeButtonDiv/ThemeButtonDiv";
 
 function App() {
   const [ToDolst, ToDolstChange] = useState<any[]>([]);
   const [page, setpage] = useState(0);
   return (
     <>
+      <ThemeButtonDiv />
       <div className="PurpLine"></div>
       <main className="MainPage">
         <ToDoAdd
