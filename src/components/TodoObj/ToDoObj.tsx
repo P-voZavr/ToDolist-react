@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./style.css";
 import { ToDo } from "../../types/ToDo";
+import edit from "./img/edit.svg";
+import del from "./img/delete.svg";
 
 type objpar = {
   text: string;
@@ -60,10 +62,10 @@ function ToDoObj({ text, i, ToDolst, ToDolstChange, checkboxvalue }: objpar) {
         <p className="p">{text}</p>
       )}
       <button className="delButton" onClick={() => ToDoDel(i)}>
-        Delete
+        <img className="delButtonImg" src={del} />
       </button>
       <button className="renameButton" onClick={ToDoRename}>
-        Rename
+        <img className="renameButtonImg" src={edit} alt="Rename" />
       </button>
     </div>
   );

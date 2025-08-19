@@ -1,6 +1,7 @@
 import "./style.css";
 import { useState } from "react";
 import { ToDo } from "../../types/ToDo";
+import SearchButton from "../SearchButton/SearchButton";
 
 type props = {
   ToDolst: ToDo[];
@@ -29,7 +30,10 @@ function ToDoAdd({ ToDolst, ToDolstChange, setpage }: props) {
   return (
     <>
       <div className="ToDoAdd">
-        <p className="ToDoAddP">New ToDo:</p>
+        <div className="ToDoAddPSearchButton">
+          <p className="ToDoAddP">New ToDo:</p>
+          <SearchButton />
+        </div>
         <div className="InputDiv">
           <input
             value={ToDovalue}

@@ -11,7 +11,7 @@
 .delButton {
   height: 30px;
   border-radius: 4px;
-  width: 55px;
+  width: 30px;
   border: none;
   background-color: rgb(99, 7, 30);
   color: white;
@@ -23,12 +23,15 @@
 .renameButton {
   height: 30px;
   border-radius: 4px;
-  width: 68px;
+  width: 30px;
   border: none;
   background-color: var(--purple);
   color: white;
   font-size: 15px;
   cursor: pointer;
+  padding-right: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .p {
@@ -81,4 +84,16 @@ input[type="checkbox"]:checked::after {
   position: absolute;
   left: 1px;
   top: -3px;
+}
+
+.renameButtonImg {
+  margin-left: 5px;
+
+  width: 21px;
+}
+
+.delButtonImg {
+  margin-top: 2px;
+  width: 21px;
+  margin-left: -2px;
 }

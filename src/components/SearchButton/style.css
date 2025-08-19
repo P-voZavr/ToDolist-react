@@ -1,0 +1,10 @@
+.SearchButton {
+  border: none;
+  background-color: var(--bg-color);
+  cursor: pointer;
+  color: var(--text-color);
+}
+.SearchButtonImg {
+  width: 15px;
+  margin-left: 5px;
+}
