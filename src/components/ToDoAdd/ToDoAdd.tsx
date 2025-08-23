@@ -7,8 +7,9 @@ type props = {
   ToDolst: ToDo[];
   ToDolstChange: React.Dispatch<React.SetStateAction<ToDo[]>>;
   setpage: React.Dispatch<React.SetStateAction<number>>;
+  isdark: boolean;
 };
-function ToDoAdd({ ToDolst, ToDolstChange, setpage }: props) {
+function ToDoAdd({ ToDolst, ToDolstChange, setpage, isdark }: props) {
   const [ToDovalue, ToDovalueChange] = useState<string>("");
 
   function AddToDo() {
@@ -32,7 +33,7 @@ function ToDoAdd({ ToDolst, ToDolstChange, setpage }: props) {
       <div className="ToDoAdd">
         <div className="ToDoAddPSearchButton">
           <p className="ToDoAddP">New ToDo:</p>
-          <SearchButton />
+          <SearchButton isdark={isdark} />
         </div>
         <div className="InputDiv">
           <input

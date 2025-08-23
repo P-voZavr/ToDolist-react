@@ -35,7 +35,7 @@
 }
 
 .p {
-  width: 440px;
+  width: 540px;
   text-align: right;
   margin-right: 10px;
 }
@@ -52,7 +52,7 @@
 }
 
 .del {
-  width: 440px;
+  width: 540px;
   text-align: right;
   margin-right: 10px;
   color: var(--purple);

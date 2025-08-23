@@ -1,14 +1,14 @@
 import "./style.css";
-import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import sun from "./img/sun.svg";
 import moon from "./img/moon.svg";
 
-function ThemeButtonDiv() {
-  const [isdark, setisdark] = useState(
-    localStorage.getItem("theme") === "dark"
-  );
+interface ThemeButtonDivProps {
+  isdark: boolean;
+  setisdark: (value: boolean) => void;
+}
+function ThemeButtonDiv({ isdark, setisdark }: ThemeButtonDivProps) {
   const btnRef = useRef<HTMLButtonElement>(null);
 
   const toggleTheme = () => {

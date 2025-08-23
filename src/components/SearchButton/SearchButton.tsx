@@ -1,10 +1,18 @@
 import "./style.css";
 import searchwite from "./img/searchWhite.svg";
-function SearchButton() {
+import searchBlack from "./img/searchBlack.svg";
+interface SearchButtonProps {
+  isdark: boolean;
+}
+function SearchButton({ isdark }: SearchButtonProps) {
   return (
     <button className="SearchButton">
       Search
-      <img className="SearchButtonImg" src={searchwite} />
+      {isdark ? (
+        <img className="SearchButtonImg" src={searchwite} />
+      ) : (
+        <img className="SearchButtonImg" src={searchBlack} />
+      )}
     </button>
   );
 }

@@ -8,12 +8,16 @@ import ThemeButtonDiv from "./components/ThemeButtonDiv/ThemeButtonDiv";
 function App() {
   const [ToDolst, ToDolstChange] = useState<any[]>([]);
   const [page, setpage] = useState(0);
+  const [isdark, setisdark] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
   return (
     <>
-      <ThemeButtonDiv />
+      <ThemeButtonDiv isdark={isdark} setisdark={setisdark} />
       <div className="PurpLine"></div>
       <main className="MainPage">
         <ToDoAdd
+          isdark={isdark}
           ToDolst={ToDolst}
           ToDolstChange={ToDolstChange}
           setpage={setpage}
