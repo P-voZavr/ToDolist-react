@@ -5,12 +5,26 @@ type prop = {
   page: number;
   setpage: React.Dispatch<React.SetStateAction<number>>;
   ToDolst: ToDo[];
+  isSearch: boolean;
+  ToDovalue: string;
 };
 
-function PagesArr({ page, setpage, ToDolst }: prop) {
+function PagesArr({ page, setpage, ToDolst, isSearch, ToDovalue }: prop) {
   const pagesarr: number[] = [];
 
-  const totalpages = Math.ceil(ToDolst.length / 5);
+  const searchlst = ToDolst.map((val, index) => {
+    if (val.text.includes(ToDovalue.trim())) return index;
+    else return null;
+  })
+    .reverse()
+    .filter(Boolean);
+
+  let totalpages = 0;
+  if (isSearch) {
+    totalpages = Math.ceil(searchlst.length / 5);
+  } else {
+    totalpages = Math.ceil(ToDolst.length / 5);
+  }
 
   for (let i = 0; i < totalpages; i++) {
     pagesarr.push(i);

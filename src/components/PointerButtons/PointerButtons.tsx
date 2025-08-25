@@ -5,9 +5,11 @@ type prop = {
   setpage: React.Dispatch<React.SetStateAction<number>>;
   page: number;
   ToDolst: ToDo[];
+  isSearch: boolean;
+  ToDovalue: string;
 };
 
-function PointerButtons({ page, setpage, ToDolst }: prop) {
+function PointerButtons({ page, setpage, ToDolst, isSearch, ToDovalue }: prop) {
   const totalpages = Math.ceil(ToDolst.length / 5);
 
   const handleNextPage = () => {
@@ -30,7 +32,13 @@ function PointerButtons({ page, setpage, ToDolst }: prop) {
         {"<"} Prev
       </button>
       <div className="Botline">
-        <PagesArr page={page} setpage={setpage} ToDolst={ToDolst} />
+        <PagesArr
+          page={page}
+          setpage={setpage}
+          ToDolst={ToDolst}
+          isSearch={isSearch}
+          ToDovalue={ToDovalue}
+        />
       </div>
 
       <button className="PointButton" onClick={handleNextPage}>
