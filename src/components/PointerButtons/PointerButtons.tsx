@@ -2,10 +2,8 @@ import "./style.css";
 import PagesArr from "../PagesArr/PagesArr";
 import { useToDoStore } from "../../store/useToDoStore";
 import { usePageStore } from "../../store/usePageStore";
-import { useSearchStore } from "../../store/useSearchStore";
 
 function PointerButtons() {
-  const { isSearch } = useSearchStore();
   const { ToDolst } = useToDoStore();
   const { page, setpage } = usePageStore();
 
@@ -31,7 +29,7 @@ function PointerButtons() {
         {"<"} Prev
       </button>
       <div className="Botline">
-        <PagesArr isSearch={isSearch} />
+        <PagesArr />
       </div>
 
       <button className="PointButton" onClick={handleNextPage}>

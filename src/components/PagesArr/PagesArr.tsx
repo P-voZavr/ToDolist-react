@@ -1,17 +1,15 @@
 import "./style.css";
 import { useToDoStore } from "../../store/useToDoStore";
 import { usePageStore } from "../../store/usePageStore";
+import { useSearchStore } from "../../store/useSearchStore";
 import searchlstLength from "../../help/searchlistLength";
 
-type prop = {
-  isSearch: boolean;
-};
-
-function PagesArr({ isSearch }: prop) {
+function PagesArr() {
   const pagesarr: number[] = [];
 
   const { ToDolst } = useToDoStore();
   const { page, setpage } = usePageStore();
+  const { isSearch } = useSearchStore();
 
   let totalpages = 0;
 
