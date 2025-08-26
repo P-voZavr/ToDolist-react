@@ -1,20 +1,19 @@
 import { useState } from "react";
 import "./style.css";
-import { ToDo } from "../../types/ToDo";
 import edit from "./img/edit.svg";
 import del from "./img/delete.svg";
+import { useToDoStore } from "../../store/useToDoStore";
 
 type objpar = {
   text: string;
   i: number;
-  ToDolst: ToDo[];
-  ToDolstChange: React.Dispatch<React.SetStateAction<ToDo[]>>;
   checkboxvalue: boolean;
 };
 
-function ToDoObj({ text, i, ToDolst, ToDolstChange, checkboxvalue }: objpar) {
+function ToDoObj({ text, i, checkboxvalue }: objpar) {
   const [ternar, setTernar] = useState(false);
   const [inptvalue, setinptvalue] = useState("");
+  const { ToDolst, ToDolstChange } = useToDoStore();
 
   const ToDoDel = (index: number) => {
     const newList = [...ToDolst];

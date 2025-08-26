@@ -1,21 +1,15 @@
 import "./style.css";
 import ToDoObj from "../TodoObj/ToDoObj";
-import { ToDo } from "../../types/ToDo";
 
-type props = {
-  ToDolst: ToDo[];
-  ToDolstChange: React.Dispatch<React.SetStateAction<ToDo[]>>;
-  page: number;
-  ToDovalue: string;
-  isSearch: boolean;
-};
-function ToDoTable({
-  ToDolst,
-  ToDolstChange,
-  page,
-  ToDovalue,
-  isSearch,
-}: props) {
+import { useToDoStore } from "../../store/useToDoStore";
+import { usePageStore } from "../../store/usePageStore";
+import { useSearchStore } from "../../store/useSearchStore";
+
+function ToDoTable() {
+  const { ToDovalue, ToDolst } = useToDoStore();
+  const { page } = usePageStore();
+  const { isSearch } = useSearchStore();
+
   const startIndex = page * 5;
   const endIndex = startIndex + 5;
 
@@ -23,8 +17,6 @@ function ToDoTable({
     if (val.text.includes(ToDovalue.trim()))
       return (
         <ToDoObj
-          ToDolstChange={ToDolstChange}
-          ToDolst={ToDolst}
           text={val.text}
           checkboxvalue={val.checkboxvalue}
           i={index}
@@ -38,8 +30,6 @@ function ToDoTable({
 
   const ToDoObjList = ToDolst.map((val, index) => (
     <ToDoObj
-      ToDolstChange={ToDolstChange}
-      ToDolst={ToDolst}
       text={val.text}
       checkboxvalue={val.checkboxvalue}
       i={index}

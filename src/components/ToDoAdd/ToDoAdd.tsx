@@ -1,29 +1,17 @@
 import "./style.css";
 import { useEffect } from "react";
-import { ToDo } from "../../types/ToDo";
 import SearchButton from "../SearchButton/SearchButton";
+import { useToDoStore } from "../../store/useToDoStore";
+import { usePageStore } from "../../store/usePageStore";
+import { useSearchStore } from "../../store/useSearchStore";
 
-type props = {
-  ToDolst: ToDo[];
-  ToDolstChange: React.Dispatch<React.SetStateAction<ToDo[]>>;
-  setpage: React.Dispatch<React.SetStateAction<number>>;
-  isdark: boolean;
-  isSearch: boolean;
-  setIsSearch: React.Dispatch<React.SetStateAction<boolean>>;
+function ToDoAdd() {
+  const { ToDolst, ToDolstChange, ToDovalue, ToDovalueChange } = useToDoStore();
 
-  ToDovalue: string;
-  ToDovalueChange: React.Dispatch<React.SetStateAction<string>>;
-};
-function ToDoAdd({
-  ToDolst,
-  ToDolstChange,
-  setpage,
-  isdark,
-  isSearch,
-  setIsSearch,
-  ToDovalue,
-  ToDovalueChange,
-}: props) {
+  const { setpage } = usePageStore();
+
+  const { isSearch } = useSearchStore();
+
   function AddToDo() {
     if (ToDovalue.trim() === "") {
       ToDovalueChange("");
@@ -50,11 +38,7 @@ function ToDoAdd({
       <div className="ToDoAdd">
         <div className="ToDoAddPSearchButton">
           <p className="ToDoAddP">New ToDo:</p>
-          <SearchButton
-            isdark={isdark}
-            isSearch={isSearch}
-            setIsSearch={setIsSearch}
-          />
+          <SearchButton />
         </div>
         <div className="InputDiv">
           <input
@@ -65,7 +49,7 @@ function ToDoAdd({
             }
             value={ToDovalue}
             className="TextInput"
-            onKeyDown={handleKeyDown}
+            onKeyDown={!isSearch ? handleKeyDown : undefined}
             onChange={(event) => {
               ToDovalueChange(event.target.value);
             }}

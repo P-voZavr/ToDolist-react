@@ -1,17 +1,17 @@
 import "./style.css";
 import searchwite from "./img/searchWhite.svg";
 import searchBlack from "./img/searchBlack.svg";
-interface SearchButtonProps {
-  isdark: boolean;
-  isSearch: boolean;
-  setIsSearch: React.Dispatch<React.SetStateAction<boolean>>;
-}
-function SearchButton({ isdark, isSearch, setIsSearch }: SearchButtonProps) {
-  const handleSearch = () => {
-    setIsSearch(!isSearch);
-  };
+import { useSearchStore } from "../../store/useSearchStore.ts";
+import { useThemeStore } from "../../store/useThemeStore";
+
+function SearchButton() {
+  const { isSearch, setIsSearch } = useSearchStore();
+  const { isdark } = useThemeStore();
   return (
-    <button className="SearchButton" onClick={handleSearch}>
+    <button
+      className={isSearch ? "SearchButtonActive" : "SearchButton"}
+      onClick={setIsSearch}
+    >
       Search
       {isdark ? (
         <img className="SearchButtonImg" src={searchwite} />

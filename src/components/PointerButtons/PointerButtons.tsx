@@ -1,15 +1,14 @@
 import "./style.css";
 import PagesArr from "../PagesArr/PagesArr";
-import { ToDo } from "../../types/ToDo";
-type prop = {
-  setpage: React.Dispatch<React.SetStateAction<number>>;
-  page: number;
-  ToDolst: ToDo[];
-  isSearch: boolean;
-  ToDovalue: string;
-};
+import { useToDoStore } from "../../store/useToDoStore";
+import { usePageStore } from "../../store/usePageStore";
+import { useSearchStore } from "../../store/useSearchStore";
 
-function PointerButtons({ page, setpage, ToDolst, isSearch, ToDovalue }: prop) {
+function PointerButtons() {
+  const { isSearch } = useSearchStore();
+  const { ToDolst } = useToDoStore();
+  const { page, setpage } = usePageStore();
+
   const totalpages = Math.ceil(ToDolst.length / 5);
 
   const handleNextPage = () => {
@@ -32,13 +31,7 @@ function PointerButtons({ page, setpage, ToDolst, isSearch, ToDovalue }: prop) {
         {"<"} Prev
       </button>
       <div className="Botline">
-        <PagesArr
-          page={page}
-          setpage={setpage}
-          ToDolst={ToDolst}
-          isSearch={isSearch}
-          ToDovalue={ToDovalue}
-        />
+        <PagesArr isSearch={isSearch} />
       </div>
 
       <button className="PointButton" onClick={handleNextPage}>

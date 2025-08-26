@@ -1,27 +1,22 @@
 import "./style.css";
-import { ToDo } from "../../types/ToDo";
+import { useToDoStore } from "../../store/useToDoStore";
+import { usePageStore } from "../../store/usePageStore";
+import searchlstLength from "../../help/searchlistLength";
 
 type prop = {
-  page: number;
-  setpage: React.Dispatch<React.SetStateAction<number>>;
-  ToDolst: ToDo[];
   isSearch: boolean;
-  ToDovalue: string;
 };
 
-function PagesArr({ page, setpage, ToDolst, isSearch, ToDovalue }: prop) {
+function PagesArr({ isSearch }: prop) {
   const pagesarr: number[] = [];
 
-  const searchlst = ToDolst.map((val, index) => {
-    if (val.text.includes(ToDovalue.trim())) return index;
-    else return null;
-  })
-    .reverse()
-    .filter(Boolean);
+  const { ToDolst } = useToDoStore();
+  const { page, setpage } = usePageStore();
 
   let totalpages = 0;
+
   if (isSearch) {
-    totalpages = Math.ceil(searchlst.length / 5);
+    totalpages = Math.ceil(searchlstLength / 5);
   } else {
     totalpages = Math.ceil(ToDolst.length / 5);
   }

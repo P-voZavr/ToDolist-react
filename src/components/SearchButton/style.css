@@ -8,3 +8,9 @@
   width: 15px;
   margin-left: 5px;
 }
+.SearchButtonActive {
+  border: none;
+  background-color: var(--bg-color);
+  cursor: pointer;
+  color: var(--purple);
+}

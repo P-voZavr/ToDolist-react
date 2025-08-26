@@ -3,16 +3,15 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import sun from "./img/sun.svg";
 import moon from "./img/moon.svg";
+import { useThemeStore } from "../../store/useThemeStore";
 
-interface ThemeButtonDivProps {
-  isdark: boolean;
-  setisdark: (value: boolean) => void;
-}
-function ThemeButtonDiv({ isdark, setisdark }: ThemeButtonDivProps) {
+function ThemeButtonDiv() {
   const btnRef = useRef<HTMLButtonElement>(null);
 
+  const { isdark, setIsDark } = useThemeStore();
+
   const toggleTheme = () => {
-    setisdark(!isdark);
+    setIsDark();
     if (isdark) {
       btnRef.current?.classList.add("ThemeButtonIsDark");
     } else {
