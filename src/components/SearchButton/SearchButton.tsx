@@ -1,6 +1,8 @@
 import "./style.css";
 import searchwite from "./img/searchWhite.svg";
 import searchBlack from "./img/searchBlack.svg";
+import searchPurple from "./img/searchPurple.svg";
+import searchGreen from "./img/searchGreen.svg";
 import { useSearchStore } from "../../store/useSearchStore.ts";
 import { useThemeStore } from "../../store/useThemeStore";
 
@@ -13,7 +15,13 @@ function SearchButton() {
       onClick={setIsSearch}
     >
       Search
-      {isdark ? (
+      {isSearch ? (
+        !isdark ? (
+          <img className="SearchButtonImg" src={searchPurple} />
+        ) : (
+          <img className="SearchButtonImg" src={searchGreen} />
+        )
+      ) : isdark ? (
         <img className="SearchButtonImg" src={searchwite} />
       ) : (
         <img className="SearchButtonImg" src={searchBlack} />
