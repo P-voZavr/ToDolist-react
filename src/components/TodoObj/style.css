@@ -97,3 +97,35 @@ input[type="checkbox"]:checked::after {
   width: 21px;
   margin-left: -2px;
 }
+
+@media screen and (max-width: 600px) {
+  .ToDoObj {
+    width: 400px;
+  }
+
+  .p {
+    width: 400px;
+  }
+  .del {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .ToDoObj {
+    width: 300px;
+  }
+
+  .p {
+    width: 300px;
+  }
+  .del {
+    width: 300px;
+  }
+}
+
+@media screen and (max-height: 680px) {
+  .ToDoObj {
+    height: 30px;
+  }
+}
