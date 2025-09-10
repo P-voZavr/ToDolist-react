@@ -117,10 +117,10 @@ input[type="checkbox"]:checked::after {
   }
 
   .p {
-    width: 300px;
+    width: 201px;
   }
   .del {
-    width: 300px;
+    width: 201;
   }
 }
 

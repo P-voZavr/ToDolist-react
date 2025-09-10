@@ -10,7 +10,7 @@ function PagesArr() {
   const { ToDolst } = useToDoStore();
   const { page, setpage } = usePageStore();
   const { isSearch } = useSearchStore();
-
+  console.log(searchlstLength);
   let totalpages = 0;
 
   if (isSearch) {

@@ -1,7 +1,5 @@
 import "./css/main.css";
 
-import searchlstLength from "./help/searchlistLength";
-
 import ToDoAdd from "./components/ToDoAdd/ToDoAdd";
 import ToDoTable from "./components/ToDoTable/ToDoTable.tsx";
 import PointerButtons from "./components/PointerButtons/PointerButtons.tsx";
@@ -11,9 +9,18 @@ import { useToDoStore } from "./store/useToDoStore";
 import { useSearchStore } from "./store/useSearchStore";
 
 function App() {
-  const { ToDolst } = useToDoStore();
+  const { ToDolst, ToDovalue } = useToDoStore();
 
   const { isSearch } = useSearchStore();
+
+  let searchlstLength = 0;
+  if (ToDovalue.trim() !== "") {
+    searchlstLength = ToDolst.filter((val) =>
+      val.text.includes(ToDovalue.trim())
+    ).length;
+  } else {
+    searchlstLength = ToDolst.length;
+  }
 
   return (
     <>
