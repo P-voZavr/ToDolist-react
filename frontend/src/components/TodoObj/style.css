@@ -42,13 +42,17 @@
 
 .renameinpt {
   width: 400px;
-  border: 1px solid rgba(0, 0, 0, 0.322);
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
   height: 30px;
   border-radius: 4px;
   outline: none;
   margin-right: 20px;
-  margin-left: 20px;
+  margin-left: 100px;
+  margin-top: 7px;
+  margin-bottom: 6px;
   padding-left: 20px;
+  color: var(--text-color);
 }
 
 .del {

@@ -4,22 +4,29 @@ import SearchButton from "../SearchButton/SearchButton";
 import { useToDoStore } from "../../store/useToDoStore";
 import { usePageStore } from "../../store/usePageStore";
 import { useSearchStore } from "../../store/useSearchStore";
+import axios from "axios";
 
 function ToDoAdd() {
-  const { ToDolst, ToDolstChange, ToDovalue, ToDovalueChange } = useToDoStore();
+  const { ToDolstChange, ToDovalue, ToDovalueChange } = useToDoStore();
 
   const { setpage } = usePageStore();
 
   const { isSearch } = useSearchStore();
 
-  function AddToDo() {
+  async function AddToDo() {
     if (ToDovalue.trim() === "") {
       ToDovalueChange("");
       return;
     }
     setpage(0);
-    ToDolstChange([...ToDolst, { text: ToDovalue, checkboxvalue: false }]);
+    await axios.post("http://localhost:5000/api/ToDolst", {
+      text: ToDovalue,
+      checkboxvalue: false,
+    });
     ToDovalueChange("");
+    const response = await axios.get("http://localhost:5000/api/ToDolst");
+    // @ts-ignore
+    ToDolstChange(response.data);
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {

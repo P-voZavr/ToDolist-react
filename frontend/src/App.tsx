@@ -1,12 +1,12 @@
 import "./css/main.css";
 
-import ToDoAdd from "./components/ToDoAdd/ToDoAdd";
+import ToDoAdd from "./components/ToDoAdd/ToDoAdd.tsx";
 import ToDoTable from "./components/ToDoTable/ToDoTable.tsx";
 import PointerButtons from "./components/PointerButtons/PointerButtons.tsx";
 
-import ThemeButtonDiv from "./components/ThemeButtonDiv/ThemeButtonDiv";
-import { useToDoStore } from "./store/useToDoStore";
-import { useSearchStore } from "./store/useSearchStore";
+import ThemeButtonDiv from "./components/ThemeButtonDiv/ThemeButtonDiv.tsx";
+import { useToDoStore } from "./store/useToDoStore.ts";
+import { useSearchStore } from "./store/useSearchStore.ts";
 
 function App() {
   const { ToDolst, ToDovalue } = useToDoStore();

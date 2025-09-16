@@ -4,7 +4,7 @@ import searchBlack from "./img/searchBlack.svg";
 import searchPurple from "./img/searchPurple.svg";
 import searchGreen from "./img/searchGreen.svg";
 import { useSearchStore } from "../../store/useSearchStore.ts";
-import { useThemeStore } from "../../store/useThemeStore";
+import { useThemeStore } from "../../store/useThemeStore.ts";
 
 function SearchButton() {
   const { isSearch, setIsSearch } = useSearchStore();

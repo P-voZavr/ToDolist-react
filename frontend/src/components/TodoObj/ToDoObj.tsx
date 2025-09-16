@@ -1,46 +1,53 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./style.css";
 import edit from "./img/edit.svg";
 import del from "./img/delete.svg";
 import { useToDoStore } from "../../store/useToDoStore";
+import {
+  getToDolst as getAll,
+  deleteToDo,
+  updateToDo,
+} from "../../api/todo.api";
 
 type objpar = {
   text: string;
-  i: number;
   checkboxvalue: boolean;
+  id: string;
 };
 
-function ToDoObj({ text, i, checkboxvalue }: objpar) {
+function ToDoObj({ text, checkboxvalue, id }: objpar) {
   const [ternar, setTernar] = useState(false);
   const [inptvalue, setinptvalue] = useState("");
-  const { ToDolst, ToDolstChange } = useToDoStore();
+  const { ToDolstChange } = useToDoStore();
 
-  const ToDoDel = (index: number) => {
-    const newList = [...ToDolst];
-    newList.splice(index, 1);
-    ToDolstChange(newList);
+  async function getToDolst() {
+    const res = await getAll();
+    ToDolstChange(res);
+  }
+
+  const ToDoDel = async () => {
+    await deleteToDo(id);
+
+    await getToDolst();
   };
 
-  const ToDoRename = () => {
-    setTernar(!ternar);
+  useEffect(() => {
     setinptvalue("");
-  };
+  }, [ternar]);
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const ToDoRename = async (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter" && inptvalue.trim() !== "") {
-      const newList = [...ToDolst];
-      newList.splice(i, 1, { text: inptvalue, checkboxvalue: checkboxvalue });
-
-      ToDolstChange(newList);
-
-      ToDoRename();
+      await updateToDo({ text: inptvalue, checkboxvalue }, id);
+      setTernar(false);
+      await getToDolst();
+    } else if (event.key === "Enter") {
+      setTernar(false);
     }
   };
 
-  const ToDoCheckbox = () => {
-    const newList = [...ToDolst];
-    newList.splice(i, 1, { text: text, checkboxvalue: !checkboxvalue });
-    ToDolstChange(newList);
+  const ToDoCheckbox = async () => {
+    await updateToDo({ text, checkboxvalue: !checkboxvalue }, id);
+    await getToDolst();
   };
 
   return (
@@ -51,7 +58,7 @@ function ToDoObj({ text, i, checkboxvalue }: objpar) {
           className="renameinpt"
           value={inptvalue}
           onChange={(event) => setinptvalue(event.target.value)}
-          onKeyDown={handleKeyDown}
+          onKeyDown={ToDoRename}
           autoFocus
           placeholder="Нажми Enter чтобы подтвердить изменение"
         />
@@ -60,10 +67,10 @@ function ToDoObj({ text, i, checkboxvalue }: objpar) {
       ) : (
         <p className="p">{text}</p>
       )}
-      <button className="delButton" onClick={() => ToDoDel(i)}>
+      <button className="delButton" onClick={() => ToDoDel()}>
         <img className="delButtonImg" src={del} />
       </button>
-      <button className="renameButton" onClick={ToDoRename}>
+      <button className="renameButton" onClick={() => setTernar(!ternar)}>
         <img className="renameButtonImg" src={edit} alt="Rename" />
       </button>
     </div>
