@@ -24,4 +24,9 @@ async function deleteToDo(id: string) {
   await http.delete<ToDo>(ENDPOINTS.TODO + `/${id}`);
 }
 
-export { getToDolst, createToDo, updateToDo, deleteToDo };
+async function searchToDo(target: string) {
+  const res = await http.get<ToDo[]>(ENDPOINTS.TODO + `/?search=${target}`);
+  return res.data;
+}
+
+export { getToDolst, createToDo, updateToDo, deleteToDo, searchToDo };

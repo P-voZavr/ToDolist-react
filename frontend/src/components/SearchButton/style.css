@@ -14,7 +14,6 @@
   background-color: var(--bg-color);
   cursor: pointer;
   color: var(--purple);
-  transition: all 0.2s ease-in-out;
 }
 
 @keyframes glow {

@@ -5,11 +5,19 @@ const router = express.Router();
 
 router.get("/ToDolst", async (req, res) => {
   try {
-    const todos = await ToDo.find();
+    let todos;
+
+    if (req.query.search) {
+      todos = await ToDo.find({
+        text: { $regex: req.query.search, $options: "i" },
+      });
+    } else {
+      todos = await ToDo.find();
+    }
 
     res.json(todos);
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    console.log(error);
   }
 });
 
