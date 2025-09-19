@@ -21,13 +21,11 @@ function ToDoObj({ text, checkboxvalue, id }: objpar) {
   const { ToDolstChange } = useToDoStore();
 
   async function getToDolst() {
-    const res = await getAll();
-    ToDolstChange(res);
+    ToDolstChange(await getAll());
   }
 
   const ToDoDel = async () => {
     await deleteToDo(id);
-
     await getToDolst();
   };
 
@@ -68,7 +66,7 @@ function ToDoObj({ text, checkboxvalue, id }: objpar) {
         <p className="p">{text}</p>
       )}
       <button className="delButton" onClick={() => ToDoDel()}>
-        <img className="delButtonImg" src={del} />
+        <img className="delButtonImg" src={del} alt="Delete" />
       </button>
       <button className="renameButton" onClick={() => setTernar(!ternar)}>
         <img className="renameButtonImg" src={edit} alt="Rename" />

@@ -9,18 +9,9 @@ import { useToDoStore } from "./store/useToDoStore.ts";
 import { useSearchStore } from "./store/useSearchStore.ts";
 
 function App() {
-  const { ToDolst, ToDovalue } = useToDoStore();
+  const { ToDolst } = useToDoStore();
 
   const { isSearch } = useSearchStore();
-
-  let searchlstLength = 0;
-  if (ToDovalue.trim() !== "") {
-    searchlstLength = ToDolst.filter((val) =>
-      val.text.includes(ToDovalue.trim())
-    ).length;
-  } else {
-    searchlstLength = ToDolst.length;
-  }
 
   return (
     <>
@@ -31,7 +22,7 @@ function App() {
         <ToDoTable />
         {ToDolst.length > 5 ? (
           isSearch ? (
-            searchlstLength > 5 ? (
+            ToDolst.length > 5 ? (
               <PointerButtons />
             ) : null
           ) : (
