@@ -1,6 +1,12 @@
 const ENDPOINTS = {
-  TODO: "/api/ToDolst",
-  USERS: "/users",
+  TODOLST: "/api/ToDolst",
+  REGISTER: "/api/register",
+  LOGIN: "/api/login",
+  LOGOUT: "/api/logout",
+  REFRESH: "/api/refresh",
+  TODOADD: "/api/ToDoadd",
+  TODODELETE: "/api/ToDodelete",
+  TODOUPDATE: "/api/ToDoupdate",
 };
 
 export default ENDPOINTS;
