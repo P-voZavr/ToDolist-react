@@ -2,10 +2,8 @@ import User from "../models/User-model.js";
 
 async function addTodosById(id, todo) {
   try {
-    todo.checkboxvalue = Boolean(todo.checkboxvalue);
     const user = await User.findById(id);
     const newTodo = user.Todos.create(todo);
-    console.log(newTodo);
     user.Todos.push(newTodo);
     await user.save();
     return newTodo;

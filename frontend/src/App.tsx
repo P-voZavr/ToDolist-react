@@ -1,34 +1,21 @@
 import "./css/main.css";
-
-import ToDoAdd from "./components/ToDoAdd/ToDoAdd.tsx";
-import ToDoTable from "./components/ToDoTable/ToDoTable.tsx";
-import PointerButtons from "./components/PointerButtons/PointerButtons.tsx";
-
+import MainPage from "./pages/Mainpage.tsx";
+import LoginPage from "./pages/LoginPage.tsx";
+import Registrationppage from "./pages/Registrationpage.tsx";
 import ThemeButtonDiv from "./components/ThemeButtonDiv/ThemeButtonDiv.tsx";
-import { useToDoStore } from "./store/useToDoStore.ts";
-import { useSearchStore } from "./store/useSearchStore.ts";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const { ToDolst } = useToDoStore();
-
-  const { isSearch } = useSearchStore();
-
   return (
     <>
       <ThemeButtonDiv />
       <div className="PurpLine"></div>
       <main className="MainPage">
-        <ToDoAdd />
-        <ToDoTable />
-        {ToDolst.length > 5 ? (
-          isSearch ? (
-            ToDolst.length > 5 ? (
-              <PointerButtons />
-            ) : null
-          ) : (
-            <PointerButtons />
-          )
-        ) : null}
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/Registration" element={<Registrationppage />} />
+          <Route path="/Login" element={<LoginPage />} />
+        </Routes>
       </main>
     </>
   );

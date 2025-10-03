@@ -8,24 +8,25 @@ type TODO = {
 };
 
 async function getToDolst() {
-  const res = await http.get<ToDo[]>(ENDPOINTS.TODO);
+  const res = await http.get<ToDo[]>(ENDPOINTS.TODOLST);
   return res.data;
 }
 
 async function createToDo(toDo: TODO) {
-  await http.post<ToDo>(ENDPOINTS.TODO, toDo);
+  const res = await http.post<ToDo>(ENDPOINTS.TODOADD, toDo);
+  return res.data;
 }
 
 async function updateToDo(toDo: TODO, id: string) {
-  await http.put<ToDo>(ENDPOINTS.TODO + `/${id}`, toDo);
+  await http.put<ToDo>(ENDPOINTS.TODOUPDATE + `/${id}`, toDo);
 }
 
 async function deleteToDo(id: string) {
-  await http.delete<ToDo>(ENDPOINTS.TODO + `/${id}`);
+  await http.delete<ToDo>(ENDPOINTS.TODODELETE + `/${id}`);
 }
 
 async function searchToDo(target: string) {
-  const res = await http.get<ToDo[]>(ENDPOINTS.TODO + `/?search=${target}`);
+  const res = await http.get<ToDo[]>(ENDPOINTS.TODOLST + `/?search=${target}`);
   return res.data;
 }
 

@@ -1,0 +1,92 @@
+.Registration {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color);
+  margin-top: -50px;
+  box-shadow: var(--box-shadow);
+  height: 380px;
+  width: 600px;
+  align-items: center;
+  border-radius: 4px;
+  padding: 15px;
+  padding-top: 25px;
+}
+
+.RegistrationBigText {
+  font-size: 40px;
+  color: var(--text-color);
+  margin: 0px;
+  margin-bottom: 7px;
+}
+
+.RegistrationSmallText {
+  font-size: 15px;
+  color: var(--text-color);
+  margin: 0px;
+  width: 340px;
+  line-height: 20px;
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.UsernameInput {
+  width: 500px;
+  height: 30px;
+  border: 1px solid var(--border-color);
+  outline: none;
+  background-color: var(--bg-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  padding: 5px;
+  padding-left: 10px;
+}
+
+.PasswordInput {
+  margin-top: 20px;
+  width: 500px;
+  height: 30px;
+  border: 1px solid var(--border-color);
+  outline: none;
+  background-color: var(--bg-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  padding: 5px;
+  padding-left: 10px;
+}
+
+.RegistrationButton {
+  font-size: 20px;
+  margin-top: 30px;
+  width: 350px;
+  height: 50px;
+  border: none;
+  background-color: var(--purple);
+  border-radius: 8px;
+  color: white;
+  padding: 5px;
+  padding-left: 10px;
+  cursor: pointer;
+  transition: all 100ms;
+  margin-bottom: 10px;
+}
+
+.RegistrationButton:hover {
+  opacity: 0.8;
+}
+
+.RegistrationButton:active {
+  opacity: 0.9;
+}
+
+.LoginLink {
+  color: var(--purple);
+}
+
+.RegistrationSmallBottomText {
+  font-size: 15px;
+  color: var(--text-color);
+  margin: 0px;
+  line-height: 20px;
+  text-align: center;
+  margin-bottom: 15px;
+}
