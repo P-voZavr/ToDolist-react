@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import Token from "../models/Token-model.js";
 
 function genereteTokens(id) {
-  const accesToken = jwt.sign({ id }, process.env.ACCESS_SECRET, {
+  const accessToken = jwt.sign({ id }, process.env.ACCESS_SECRET, {
     expiresIn: "30m",
   });
 
@@ -10,7 +10,7 @@ function genereteTokens(id) {
     expiresIn: "15d",
   });
 
-  return { accesToken, refreshToken };
+  return { accessToken, refreshToken };
 }
 
 async function saveToken(userid, refreshToken) {

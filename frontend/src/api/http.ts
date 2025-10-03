@@ -1,4 +1,5 @@
 import axios from "axios";
+import { refresh } from "./user.api";
 
 const http = axios.create({
   baseURL: "http://localhost:5000",
@@ -16,7 +17,9 @@ http.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response.status === 401) {
-      localStorage.removeItem("accessToken");
+      const oringinalrequest = error.config;
+      refresh();
+      return http.request(oringinalrequest);
     }
     return Promise.reject(error);
   }

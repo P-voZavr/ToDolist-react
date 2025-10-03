@@ -6,7 +6,7 @@ type usertype = {
     username: string;
     password: string;
   };
-  accesToken: string;
+  accessToken: string;
   refreshToken: string;
 };
 
@@ -15,7 +15,7 @@ async function register(username: string, password: string) {
     username,
     password,
   });
-  localStorage.setItem("accessToken", user.data.accesToken);
+  localStorage.setItem("accessToken", user.data.accessToken);
 }
 
 async function login(username: string, password: string) {
@@ -23,7 +23,12 @@ async function login(username: string, password: string) {
     username,
     password,
   });
-  localStorage.setItem("accessToken", user.data.accesToken);
+  localStorage.setItem("accessToken", user.data.accessToken);
 }
 
-export { register, login };
+async function refresh() {
+  const user = await http.post<usertype>(ENDPOINTS.REFRESH);
+  localStorage.setItem("accessToken", user.data.accessToken);
+}
+
+export { register, login, refresh };

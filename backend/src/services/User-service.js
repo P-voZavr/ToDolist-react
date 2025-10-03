@@ -15,10 +15,10 @@ async function register(username, password) {
     }
     const hashpassword = await bcrypt.hash(password, 4);
     const user = await User.create({ username, password: hashpassword });
-    const { accesToken, refreshToken } = genereteTokens(user._id);
+    const { accessToken, refreshToken } = genereteTokens(user._id);
 
     await saveToken(user._id, refreshToken);
-    return { user: user, accesToken, refreshToken };
+    return { user: user, accessToken, refreshToken };
   } catch (error) {
     console.log(error);
   }
@@ -35,10 +35,10 @@ async function login(username, password) {
       throw new Error("Invalid password");
     }
 
-    const { accesToken, refreshToken } = genereteTokens(user._id);
+    const { accessToken, refreshToken } = genereteTokens(user._id);
 
     await saveToken(user._id, refreshToken);
-    return { user: user, accesToken, refreshToken };
+    return { user: user, accessToken, refreshToken };
   } catch (error) {
     console.log(error);
   }
@@ -52,16 +52,16 @@ async function logout(refreshToken) {
   }
 }
 
-async function refresh(refreshToken) {
+async function refresh(RefreshToken) {
   try {
-    if (!validateRefreshToken(refreshToken)) {
+    if (!validateRefreshToken(RefreshToken)) {
       throw new Error("Invalid refresh token");
     }
-    const token = await findToken(refreshToken);
-    const { newaccessToken, newrefreshToken } = genereteTokens(token.userid);
-    token.refreshToken = newrefreshToken;
+    const token = await findToken(RefreshToken);
+    const { accessToken, refreshToken } = genereteTokens(token.userid);
+    token.refreshToken = refreshToken;
     await token.save();
-    return { newaccessToken, newrefreshToken };
+    return { accessToken, refreshToken };
   } catch (error) {
     console.log(error);
   }
