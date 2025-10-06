@@ -32,7 +32,15 @@ function ToDoTable() {
   )).reverse();
 
   return (
-    <div className="ToDoTable">{ToDoObjList.slice(startIndex, endIndex)}</div>
+    <>
+      {ToDolst.length <= 5 ? (
+        <div className="ToDoTable">{ToDoObjList}</div>
+      ) : (
+        <div className="ToDoTable">
+          {ToDoObjList.slice(startIndex, endIndex)}
+        </div>
+      )}
+    </>
   );
 }
 export default ToDoTable;

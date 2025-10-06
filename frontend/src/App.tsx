@@ -11,11 +11,13 @@ function App() {
       <ThemeButtonDiv />
       <div className="PurpLine"></div>
       <main className="MainPage">
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/Registration" element={<Registrationppage />} />
-          <Route path="/Login" element={<LoginPage />} />
-        </Routes>
+        {
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/Registration" element={<Registrationppage />} />
+            <Route path="/Login" element={<LoginPage />} />
+          </Routes>
+        }
       </main>
     </>
   );

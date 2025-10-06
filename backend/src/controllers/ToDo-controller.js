@@ -4,6 +4,7 @@ import {
   addTodosById,
   deleteTodosById,
   changeTodosById,
+  searchTodos,
 } from "../services/ToDo-service.js";
 
 async function getTodos(req, res) {
@@ -19,7 +20,10 @@ async function getTodos(req, res) {
     if (!userData_id) {
       return res.status(401).json({ message: "Invalid token" });
     }
-
+    if (req.query.search) {
+      const todos = await searchTodos(userData_id.id, req.query.search);
+      return res.status(200).json(todos);
+    }
     const todos = await getTodosById(userData_id.id);
 
     res.status(200).json(todos);

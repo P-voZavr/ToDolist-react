@@ -1,5 +1,10 @@
 import axios from "axios";
-import { refresh } from "./user.api";
+import ENDPOINTS from "./endpoints";
+
+type tokentype = {
+  accessToken: string;
+  refreshToken: string;
+};
 
 const http = axios.create({
   baseURL: "http://localhost:5000",
@@ -14,14 +19,20 @@ http.interceptors.request.use((config) => {
 });
 
 http.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response.status === 401) {
-      const oringinalrequest = error.config;
-      refresh();
+  (config) => config,
+  async (error) => {
+    const oringinalrequest = error.config;
+    if (error.response.status === 401 && !oringinalrequest._retry) {
+      oringinalrequest._retry = true;
+      const res = await axios.get<tokentype>(
+        "http://localhost:5000" + ENDPOINTS.REFRESH,
+        {
+          withCredentials: true,
+        }
+      );
+      localStorage.setItem("accessToken", res.data.accessToken);
       return http.request(oringinalrequest);
     }
-    return Promise.reject(error);
   }
 );
 export default http;

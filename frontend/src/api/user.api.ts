@@ -26,9 +26,4 @@ async function login(username: string, password: string) {
   localStorage.setItem("accessToken", user.data.accessToken);
 }
 
-async function refresh() {
-  const user = await http.post<usertype>(ENDPOINTS.REFRESH);
-  localStorage.setItem("accessToken", user.data.accessToken);
-}
-
-export { register, login, refresh };
+export { register, login };

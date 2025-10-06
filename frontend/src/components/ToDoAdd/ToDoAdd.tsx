@@ -13,6 +13,8 @@ function ToDoAdd() {
 
   const { isSearch } = useSearchStore();
 
+  //Функция очитстки инпута & ререденр читсотого списка & сброс страниц
+
   useEffect(() => {
     ToDovalueChange("");
     setpage(0);
@@ -21,6 +23,8 @@ function ToDoAdd() {
     };
     search();
   }, [isSearch]);
+
+  //Функция поиска
 
   useEffect(() => {
     const search = async () => {

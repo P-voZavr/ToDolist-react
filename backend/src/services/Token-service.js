@@ -45,10 +45,17 @@ async function validateRefreshToken(token) {
   }
 }
 
+async function updateRefreshToken(refreshToken) {
+  const token = await findToken(refreshToken);
+  token.refreshToken = refreshToken;
+  return token.save();
+}
+
 export {
   genereteTokens,
   saveToken,
   findToken,
   validateAccessToken,
   validateRefreshToken,
+  updateRefreshToken,
 };

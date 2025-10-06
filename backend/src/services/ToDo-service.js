@@ -48,4 +48,19 @@ async function deleteTodosById(userid, todoid) {
   }
 }
 
-export { addTodosById, getTodosById, changeTodosById, deleteTodosById };
+async function searchTodos(id, target) {
+  try {
+    const user = await User.findById(id);
+    return user.Todos.filter((todo) => todo.text.includes(target));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export {
+  addTodosById,
+  getTodosById,
+  changeTodosById,
+  deleteTodosById,
+  searchTodos,
+};

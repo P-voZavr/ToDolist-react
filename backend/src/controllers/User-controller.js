@@ -55,7 +55,7 @@ async function refresh(req, res) {
   try {
     const { refreshToken } = req.cookies;
     const newtokens = await serviceRefresh(refreshToken);
-    res.cookie("refreshToken", newtokens.newrefreshToken, {
+    res.cookie("refreshToken", newtokens.refreshToken, {
       httpOnly: true,
       maxAge: 30 * 24 * 60 * 60 * 1000,
     });
