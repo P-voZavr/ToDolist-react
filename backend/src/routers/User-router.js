@@ -5,6 +5,7 @@ import {
   logout,
   validation,
   refresh,
+  deleteAccount,
 } from "../controllers/User-controller.js";
 
 const router = new express.Router();
@@ -18,5 +19,7 @@ router.post("/logout", logout);
 router.get("/refresh", refresh);
 
 router.get("/validatetoken", validation);
+
+router.delete("/deleteaccount", deleteAccount);
 
 export default router;

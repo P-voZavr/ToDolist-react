@@ -5,7 +5,7 @@ import moon from "./img/moon.svg";
 import account_dark_theme from "../../img/account-dark-theme.svg";
 import account_light_theme from "../../img/account-light-theme.svg";
 import { useThemeStore } from "../../store/useThemeStore";
-import { logout } from "../../api/user.api";
+import { logout, deleteAccount } from "../../api/user.api";
 import { useAuthStore } from "../../store/useAuthStore";
 
 function ThemeButtonDiv() {
@@ -53,7 +53,9 @@ function ThemeButtonDiv() {
           </button>
           {isdropdown && (
             <div className="DropdownDiv">
-              <button className="DropdownButton">Delete account</button>
+              <button className="DropdownButton" onClick={deleteAccount}>
+                Delete account
+              </button>
               <button className="DropdownButton" onClick={logout}>
                 Log out
               </button>

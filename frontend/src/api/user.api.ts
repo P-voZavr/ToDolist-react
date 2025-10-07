@@ -42,4 +42,14 @@ async function logout() {
   }
 }
 
-export { register, login, logout };
+async function deleteAccount() {
+  try {
+    const user = await http.delete<usertype>(ENDPOINTS.DELETEACCOUNT);
+    localStorage.removeItem("accessToken");
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export { register, login, logout, deleteAccount };

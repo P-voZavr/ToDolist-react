@@ -52,6 +52,15 @@ async function logout(refreshToken) {
   }
 }
 
+async function deleteAccount(userid, refreshToken) {
+  try {
+    await User.findByIdAndDelete(userid);
+    await Token.findOneAndDelete({ refreshToken });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 async function refresh(RefreshToken) {
   try {
     if (!validateRefreshToken(RefreshToken)) {
@@ -80,4 +89,4 @@ async function validateToken(token) {
   }
 }
 
-export { register, login, logout, refresh, validateToken };
+export { register, login, logout, refresh, validateToken, deleteAccount };
