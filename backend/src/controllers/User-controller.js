@@ -3,6 +3,7 @@ import {
   login as serviceLogin,
   logout as servicelogot,
   refresh as serviceRefresh,
+  validateToken,
 } from "../services/User-service.js";
 
 async function registration(req, res) {
@@ -65,4 +66,16 @@ async function refresh(req, res) {
   }
 }
 
-export { registration, login, logout, refresh };
+async function validation(req, res) {
+  try {
+    if (!req.cookies.refreshToken) {
+      return res.status(200).json(false);
+    }
+    const valid = await validateToken(req.cookies.refreshToken);
+    res.status(200).json(valid);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export { registration, login, logout, refresh, validation };

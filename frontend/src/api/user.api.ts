@@ -16,14 +16,30 @@ async function register(username: string, password: string) {
     password,
   });
   localStorage.setItem("accessToken", user.data.accessToken);
+  return user;
 }
 
 async function login(username: string, password: string) {
-  const user = await http.post<usertype>(ENDPOINTS.LOGIN, {
-    username,
-    password,
-  });
-  localStorage.setItem("accessToken", user.data.accessToken);
+  try {
+    const user = await http.post<usertype>(ENDPOINTS.LOGIN, {
+      username,
+      password,
+    });
+    localStorage.setItem("accessToken", user.data.accessToken);
+    return user;
+  } catch (error) {
+    throw error;
+  }
 }
 
-export { register, login };
+async function logout() {
+  try {
+    const user = await http.post<usertype>(ENDPOINTS.LOGOUT);
+    localStorage.removeItem("accessToken");
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export { register, login, logout };

@@ -1,26 +1,15 @@
 import "./style.css";
 import ToDoObj from "../TodoObj/ToDoObj";
-import { getToDolst } from "../../api/todo.api";
 
 import { useToDoStore } from "../../store/useToDoStore";
 import { usePageStore } from "../../store/usePageStore";
 
-import { useEffect } from "react";
-
 function ToDoTable() {
-  const { ToDolst, ToDolstChange } = useToDoStore();
+  const { ToDolst } = useToDoStore();
   const { page } = usePageStore();
 
   const startIndex = page * 5;
   const endIndex = startIndex + 5;
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const todos = await getToDolst();
-      ToDolstChange(todos);
-    };
-    fetchData();
-  }, []);
 
   const ToDoObjList = ToDolst.map((val, index) => (
     <ToDoObj

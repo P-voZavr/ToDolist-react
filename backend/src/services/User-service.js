@@ -67,4 +67,17 @@ async function refresh(RefreshToken) {
   }
 }
 
-export { register, login, logout, refresh };
+async function validateToken(token) {
+  try {
+    const userData = validateRefreshToken(token);
+    if (!userData) {
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    return null;
+  }
+}
+
+export { register, login, logout, refresh, validateToken };

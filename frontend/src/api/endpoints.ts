@@ -7,6 +7,7 @@ const ENDPOINTS = {
   TODOADD: "/api/ToDoadd",
   TODODELETE: "/api/ToDodelete",
   TODOUPDATE: "/api/ToDoupdate",
+  VALIDATE: "/api/validatetoken",
 };
 
 export default ENDPOINTS;

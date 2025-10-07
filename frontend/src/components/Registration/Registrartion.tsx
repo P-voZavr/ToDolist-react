@@ -1,14 +1,18 @@
 import "./style.css";
 import { useRegistrationStore } from "../../store/useRegistrationStore";
 import { register } from "../../api/user.api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Registration() {
   const { username, password, setUsername, setPassword } =
     useRegistrationStore();
+  const navigate = useNavigate();
 
-  function aplyRegistration() {
-    register(username, password);
+  async function aplyRegistration() {
+    const res = await register(username, password);
+    if (res.status === 201) {
+      navigate("/");
+    }
   }
 
   return (

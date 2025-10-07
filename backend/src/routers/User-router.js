@@ -3,6 +3,7 @@ import {
   registration,
   login,
   logout,
+  validation,
   refresh,
 } from "../controllers/User-controller.js";
 
@@ -15,5 +16,7 @@ router.post("/login", login);
 router.post("/logout", logout);
 
 router.get("/refresh", refresh);
+
+router.get("/validatetoken", validation);
 
 export default router;

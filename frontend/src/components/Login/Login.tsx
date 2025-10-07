@@ -1,13 +1,21 @@
 import "./style.css";
 import { useLoginStore } from "../../store/useLoginStore";
 import { login } from "../../api/user.api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const { username, password, setUsername, setPassword } = useLoginStore();
+  const navigate = useNavigate();
 
-  function aplyLogin() {
-    login(username, password);
+  async function aplyLogin() {
+    try {
+      const res = await login(username, password);
+      if (res.status === 201) {
+        navigate("/");
+      }
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (
